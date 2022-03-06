@@ -1,9 +1,8 @@
 from setuptools import setup
 
 setup(
-    # TODO: Write a globally unique name which will be listed on PyPI
-    name="very-simple-dictionary",
-    author="Emre Sülün",  # TODO: Write your name
+    name="cs453-ck-dictionary",
+    author="Cankat Anday Kadim",
     version="2.0.0",
     packages=["dictionary"],
     install_requires=[
