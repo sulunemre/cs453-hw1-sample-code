@@ -1,0 +1,30 @@
+name: alp uneri ci/cd
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: [3.9, 3.10, 3.8]
+    steps:
+      uses: actions/checkout@v2
+      uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+      run: pip install -r requirements.txt
+      run: pip install pytest
+      run: pytest
+on: [push]
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
+    needs: [test]
+    steps:
+      run: pip install build
+      run: python -m build
+      uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+
