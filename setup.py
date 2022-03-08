@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     # TODO: Write a globally unique name which will be listed on PyPI
-    name="Alp Uneri CI/CD",
+    name="AlpUneriCICD",
     author="Alp Üneri",  # TODO: Write your name
     version="2.0.0",
     packages=["dictionary"],
